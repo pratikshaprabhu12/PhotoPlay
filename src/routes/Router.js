@@ -13,6 +13,8 @@ import Footer from '../components/Footer/Footer';
 import Photos from '../components/Photos/Photos';
 import Videos from '../components/Videos/Videos';
 import Favourites from '../components/Favourites/Favourites';
+import VideoPlay from '../components/VideoPlay/VideoPlay';
+import PhotoDetails from '../components/PhotoDetails/PhotoDetails';
 
 function Router() {
   const history = useHistory();
@@ -25,8 +27,8 @@ function Router() {
         <NavLink
           style={{ marginRight: '5vw' }}
           className={styles.inactive}
-          activeClassName={styles.active}
-          to="/photos"
+          exact activeClassName={styles.active}
+          to="/"
         >
           Photos
         </NavLink>
@@ -49,7 +51,7 @@ function Router() {
       </div>
 
       <Switch>
-        <Route exact path="/photos">
+        <Route exact path="/">
           <Photos />
         </Route>
         <Route exact path="/videos">
@@ -57,6 +59,13 @@ function Router() {
         </Route>
         <Route exact path="/Favourites">
           <Favourites />
+        </Route>
+
+        <Route exact path="/VideoPlay">
+          <VideoPlay />
+        </Route>
+        <Route exact path="/PhotoDetails">
+          <PhotoDetails />
         </Route>
       </Switch>
 

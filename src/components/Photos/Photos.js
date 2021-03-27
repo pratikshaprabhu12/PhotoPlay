@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useUser } from '../../ContextApis/ProvideUser';
+import {useHistory} from 'react-router-dom';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
 import outlineHeart from '../../assets/video-favorite.png';
 
@@ -15,6 +16,7 @@ const Photos = ({ ...props }) => {
   const [nextLink, SetNextLink] = useState('');
   const [heart, setHeart] = useState(false);
   const { fav, setFav, img, setImg } = useUser();
+  let history=useHistory();
 
   const url = 'https://api.pexels.com/v1/search?query=';
   const getImg = () => {
@@ -67,7 +69,9 @@ const Photos = ({ ...props }) => {
           {img.map((item, index) => {
             return (
               <div className={styles.Card} key={index}>
-                <img src={item.src.small} alt=""></img>
+                <img onClick={() => {
+                    history.push("/PhotoDetails");
+                }} src={item.src.small} alt=""></img>
                 <img src={oval} className={styles.OvalImg}></img>
                 <h3>{item.photographer}</h3>
                 <button

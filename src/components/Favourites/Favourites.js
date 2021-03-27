@@ -9,16 +9,34 @@ import playButton from '../../assets/ShapeCopy6.png';
 
 const Favourites = ({ ...props }) => {
   const { fav, setFav, img, video } = useUser();
+  
+let image = img.filter(
+  (ele, ind) =>
+    ind ===
+    img.findIndex(
+      (elem) =>
+        elem.id === ele.id 
+    )
+);
+let Video=video.filter(
+  (ele, ind) =>
+    ind ===
+    video.findIndex(
+      (elem) =>
+        elem.id === ele.id 
+    )
+);
+console.log(image);
   return (
     <div className={styles.Favourites}>
       <div className={styles.column}>
         {fav.map((item, index) => {
           return (
             <div className={styles.Card} key={index}>
-              {img.find((ele) => {
+              {image.find((ele) => {
                 return ele.id === item;
               })
-                ? img
+                ? image
                     .filter((ele) => ele.id === item)
                     .map((ele, i) => {
                       return (
@@ -57,7 +75,7 @@ const Favourites = ({ ...props }) => {
                         </div>
                       );
                     })
-                : video
+                : Video
                     .filter((ele) => ele.id === item)
                     .map((ele, i) => {
                       ele.id === item;
