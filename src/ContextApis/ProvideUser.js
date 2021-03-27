@@ -6,17 +6,17 @@ import React, {
   useState,
 } from 'react';
 
-interface AuxProps {
-  children: ReactChild | ReactChildren | ReactChild[] | ReactChildren[];
-}
+// interface AuxProps {
+//   children: ReactChild | ReactChildren | ReactChild[] | ReactChildren[];
+// }
 
 // @ts-ignore
 export const userContext = createContext();
 
-export const ProvideUser = ({ children }: AuxProps) => {
-  const [fav, setFav]: any = useState([]);
-  const [img, setImg]: any = useState([]);
-  const [video, setVideo]: any = useState([]);
+export const ProvideUser = ({ children }) => {
+  const [fav, setFav] = useState([]);
+  const [img, setImg] = useState([]);
+  const [video, setVideo] = useState([]);
   return (
     <userContext.Provider
       value={{
