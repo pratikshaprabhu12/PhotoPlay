@@ -1,0 +1,64 @@
+.Favourites {
+}
+.column {
+  display: grid;
+  margin-top: 27px;
+  margin-left: 24vw;
+  margin-right: 24vw;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  //grid-template-columns: repeat(auto-fill, 10%);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  //grid-template-columns:  70px;
+  //padding: 10px;
+
+  .Card {
+    position: relative;
+
+    img {
+      width: 220px;
+      height: 165px;
+    }
+    .OvalImg {
+      position: absolute;
+      left: 10px;
+      bottom: 15px;
+      width: 31px;
+      height: 31px;
+    }
+    h3 {
+      position: absolute;
+      left: 50px;
+      bottom: 1px;
+      height: 24px;
+      width: 208px;
+      color: #ffffff;
+      font-family: Roboto;
+      font-size: 14px;
+    }
+    .playButton {
+      position: absolute;
+      left: 40%;
+      top: 30%;
+      width: 48px;
+      height: 48px;
+    }
+    .Button {
+      position: absolute;
+
+      right: 9px;
+      top: 9px;
+      background-color: rgba(255, 255, 255, 0);
+      border: none;
+      outline: none;
+      .filled {
+        height: 20px;
+        width: 21px;
+      }
+      .outline {
+        height: 20px;
+        width: 21px;
+      }
+    }
+  }
+}
