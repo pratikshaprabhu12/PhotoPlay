@@ -19,5 +19,5 @@ export default {
 };
 
 export const Photos_Default = () => {
-  return <Photos />;
+  return <Photos search={'animal'}/>;
 };

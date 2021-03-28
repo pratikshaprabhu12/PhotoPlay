@@ -1,24 +1,30 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
+import {useLocation} from 'react-router-dom';
 import banner from '../../assets/1.0. Home - Photos/Mask.png';
 import logo from '../../assets/1.0. Home - Photos/Logo.png';
+import DarkLogo from '../../assets/Logo.png';
 import styles from './Home.module.scss';
+import { useUser } from '../../ContextApis/ProvideUser';
+import axios from 'axios';
 //import cn from 'classnames';
 
-const Home = ({ ...props }) => {
+const Home = ({ search = (search) => {}, }) => {
   const [navbar, setNavBar] = useState(false);
+  //const { search, setSearch,setImg} = useUser();
   //const navBar = cn(styles.header, { [styles.Active]: navbar });
-  // const changeBackground = () => {
+  const changeBackground = () => {
 
-  //   if (window.scrollY >= 200) {
-  //     setNavBar(true);
-  //   } else {
-  //     setNavBar(false);
-  //   }
-  // };
+    if (window.scrollY >= 200) {
+      setNavBar(true);
+    } else {
+      setNavBar(false);
+    }
+  };
 
-  // window.addEventListener("scroll", changeBackground);
-  const [img, setImg] = React.useState([]);
+  window.addEventListener("scroll", changeBackground);
+  const [img, setImgg] = React.useState([]);
+  const [text, setText] = useState('');
   const getBanner = () => {
     fetch('https://api.pexels.com/v1/curated?per_page=1', {
       headers: {
@@ -30,22 +36,23 @@ const Home = ({ ...props }) => {
         return resp.json();
       })
       .then((data) => {
-        console.log(data.photos[0].src.landscape);
-        setImg(data.photos[0].src.landscape);
+        setImgg(data.photos[0].src.landscape);
       });
   };
-  console.log(img);
+
   useEffect(() => {
     getBanner();
   }, []);
 
-  const [search, setSearch] = useState('');
+  
   const [perPage, setPerPage] = useState('');
   const [result, setResult] = useState([]);
+  const location=useLocation();
+  const path=location.pathname.split('/');
 
   function handleChange(event) {
-    const search = event.target.value;
-    setSearch(search);
+    const searchvalue = event.target.value;
+    search(searchvalue);
   }
   function noOfPics(event) {
     const perPage = event.target.value;
@@ -54,28 +61,12 @@ const Home = ({ ...props }) => {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const url =
-      'https://api.pexels.com/v1/search?query=' +
-      search +
-      '&per_page=' +
-      perPage;
-    const access_token =
-      '563492ad6f917000010000014060d806c66c47b88b9b4d7f8c487692';
-    axios
-      .get(url, {
-        headers: {
-          Authorization: `${access_token}`,
-        },
-      })
-      .then((data) => {
-        console.log(data);
-        setResult(data.data.photos);
-      });
+    search(text);
   }
 
   return (
     <div className={styles.Home}>
-      {navbar === false ? (
+      {path[1]!=='PhotoDetails'||path[1]==='VideoPlay'? (
         <div
           style={{
             backgroundImage: 'url(' + img + ')',
@@ -86,19 +77,22 @@ const Home = ({ ...props }) => {
           <img className={styles.logos} src={logo} />
           <h1>Discover the world’s best photos & videos</h1>
           <h2>Best memories online</h2>
-          <div className={styles.bg}>
+          <form className={styles.bg} onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Search photos, videos, artists"
+              onChange={(e) => {
+                setText(e.target.value);
+              }}
             ></input>
-            <div className={styles.bgs}>
+            <div className={styles.bgs} onClick={handleSubmit}>
               <span>SEARCH</span>
             </div>
-          </div>
+          </form>
         </div>
       ) : (
         <div className={styles.mask}>
-          <img className={styles.logos} src={logo} />
+          <img className={styles.logos} src={DarkLogo} />
         </div>
       )}
     </div>

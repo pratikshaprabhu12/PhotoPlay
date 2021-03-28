@@ -17,6 +17,7 @@ export const ProvideUser = ({ children }) => {
   const [fav, setFav] = useState([]);
   const [img, setImg] = useState([]);
   const [video, setVideo] = useState([]);
+  const [search, setSearch] = useState('animal');
   return (
     <userContext.Provider
       value={{
@@ -26,6 +27,7 @@ export const ProvideUser = ({ children }) => {
         setImg,
         video,
         setVideo,
+        search, setSearch
       }}
     >
       {children}

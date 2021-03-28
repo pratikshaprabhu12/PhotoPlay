@@ -19,5 +19,5 @@ export default {
 };
 
 export const Home_Default = () => {
-  return <Home />;
+  return <Home search={('animals')={}}/>;
 };

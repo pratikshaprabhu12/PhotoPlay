@@ -1,5 +1,5 @@
 import React from 'react';
-
+import {useHistory} from 'react-router-dom';
 import styles from './Favourites.module.scss';
 import { useUser } from '../../ContextApis/ProvideUser';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
@@ -9,7 +9,7 @@ import playButton from '../../assets/ShapeCopy6.png';
 
 const Favourites = ({ ...props }) => {
   const { fav, setFav, img, video } = useUser();
-  
+  let history=useHistory();
 let image = img.filter(
   (ele, ind) =>
     ind ===
@@ -41,7 +41,10 @@ console.log(image);
                     .map((ele, i) => {
                       return (
                         <div className={styles.Card} key={i}>
-                          <img src={ele.src.small} alt=""></img>
+                          <img src={ele.src.small} 
+                          onClick={() => {
+                            history.push('/PhotoDetails/'+`${ele.id}`);
+                        }} alt=""></img>
                           <img src={oval} className={styles.OvalImg}></img>
                           <h3>{ele.photographer}</h3>
                           <button

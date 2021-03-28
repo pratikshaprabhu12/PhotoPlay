@@ -5,6 +5,7 @@
     top: 0;
     height: 40vh;
     width: 100vw;
+    transition: top 0.6s;
 
     .logos {
       margin-left: 24vw;
@@ -57,6 +58,7 @@
         border-radius: 2px;
         background-color: #560014;
         margin-left: 65px;
+        cursor:pointer;
         margin-top: 2px;
         display: table;
         text-align: center;
@@ -76,7 +78,11 @@
   }
   .mask {
     height: 100px;
-    width: 1440px;
+    width: 100vw;
     background-color: #f3f3f3;
+    .logos {
+      margin-left: 22.5vw;
+      margin-top: 30px;
+    }
   }
 }

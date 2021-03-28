@@ -9,9 +9,9 @@ import { useUser } from '../../ContextApis/ProvideUser';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
 import outlineHeart from '../../assets/video-favorite.png';
 
-const Videos = ({ ...props }) => {
+const Videos = ({ search }) => {
   const [totaldata, SetToatalData] = useState();
-  const [search, SetSearch] = useState('animal');
+  //const [search, SetSearch] = useState('animal');
   const [nextLink, SetNextLink] = useState('');
   const [heart, setHeart] = useState(false);
   const { fav, setFav, video, setVideo } = useUser();
@@ -28,7 +28,8 @@ const Videos = ({ ...props }) => {
         return resp.json();
       })
       .then((data) => {
-        setVideo([...video, ...data.videos]);
+        let val=[];
+        setVideo([...val, ...data.videos]);
         SetNextLink(data.next_page);
         SetToatalData(data);
         setCount(data.page);

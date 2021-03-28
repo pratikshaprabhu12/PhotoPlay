@@ -10,13 +10,24 @@ import {useHistory} from 'react-router-dom';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
 import outlineHeart from '../../assets/video-favorite.png';
 
-const Photos = ({ ...props }) => {
-  const [totaldata, SetToatalData] = useState();
-  const [search, SetSearch] = useState('animal');
+const Photos = ({ search }) => {
+  
+  //const [search, SetSearch] = useState('animal');
   const [nextLink, SetNextLink] = useState('');
   const [heart, setHeart] = useState(false);
   const { fav, setFav, img, setImg } = useUser();
   let history=useHistory();
+  let image = img.filter(
+    (ele, ind) =>
+      ind ===
+      img.findIndex(
+        (elem) =>
+          elem.id === ele.id 
+      )
+  );
+  // let searchImg = image.filter((ele) =>
+  //     ele.name.toLowerCase().includes(search.toLowerCase())
+  //   );
 
   const url = 'https://api.pexels.com/v1/search?query=';
   const getImg = () => {
@@ -30,9 +41,11 @@ const Photos = ({ ...props }) => {
         return resp.json();
       })
       .then((data) => {
-        setImg([...img, ...data.photos]);
+        let val=[];
+        console.log(data.photos);
+        setImg([...val, ...data.photos]);
         SetNextLink(data.next_page);
-        SetToatalData(data);
+        
       });
   };
 
@@ -47,16 +60,29 @@ const Photos = ({ ...props }) => {
         return resp.json();
       })
       .then((data) => {
-        setImg([...img, ...data.photos]);
+        let image = img.filter(
+          (ele, ind) =>
+            ind ===
+            img.findIndex(
+              (elem) =>
+                elem.id === ele.id 
+            )
+        );
+        setImg([...image, ...data.photos]);
         SetNextLink(data.next_page);
-        SetToatalData(data);
+        
       });
   };
+  useEffect(() => {
+    setImg([]);
+    console.log(search);
+    getImg();
+  }, [search]);
 
   useEffect(() => {
     getImg();
   }, []);
-
+  
   return (
     <div className={styles.Photos}>
       <InfiniteScroll
@@ -66,11 +92,11 @@ const Photos = ({ ...props }) => {
         loader={<h4>Loading...</h4>}
       >
         <div className={styles.column}>
-          {img.map((item, index) => {
+          {image.map((item, index) => {
             return (
               <div className={styles.Card} key={index}>
                 <img onClick={() => {
-                    history.push("/PhotoDetails");
+                    history.push('/PhotoDetails/'+`${item.id}`);
                 }} src={item.src.small} alt=""></img>
                 <img src={oval} className={styles.OvalImg}></img>
                 <h3>{item.photographer}</h3>

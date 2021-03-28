@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useState} from 'react';
 import styles from './Router.module.scss';
 import {
   NavLink,
@@ -16,13 +16,18 @@ import Favourites from '../components/Favourites/Favourites';
 import VideoPlay from '../components/VideoPlay/VideoPlay';
 import PhotoDetails from '../components/PhotoDetails/PhotoDetails';
 
-function Router() {
+const Router = () => {
   const history = useHistory();
-  const location = useLocation();
+  const location=useLocation();
+  const path=location.pathname.split('/');
+  console.log(path);
   const { id } = useParams();
+  const [search,setSearch]=useState('animal');
   return (
     <div className={styles.Router}>
-      <Home />
+      <Home search={(value)=>{value?setSearch(value):setSearch('animal');}}/>
+      
+      {path[1]!=='PhotoDetails'||path[1]==='VideoPlay'?(
       <div className={styles.NavBar}>
         <NavLink
           style={{ marginRight: '5vw' }}
@@ -48,14 +53,14 @@ function Router() {
         >
           Favourites
         </NavLink>
-      </div>
+      </div>):null}
 
       <Switch>
         <Route exact path="/">
-          <Photos />
+          <Photos search={path[1]===''?search:'animal'}/>
         </Route>
         <Route exact path="/videos">
-          <Videos />
+          <Videos search={path[1]==='videos'?search:'animal'}/>
         </Route>
         <Route exact path="/Favourites">
           <Favourites />
@@ -64,7 +69,7 @@ function Router() {
         <Route exact path="/VideoPlay">
           <VideoPlay />
         </Route>
-        <Route exact path="/PhotoDetails">
+        <Route exact path="/PhotoDetails/:id">
           <PhotoDetails />
         </Route>
       </Switch>
@@ -72,6 +77,6 @@ function Router() {
       <Footer />
     </div>
   );
-}
+};
 
 export default Router;
