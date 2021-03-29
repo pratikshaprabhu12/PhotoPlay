@@ -1,8 +1,74 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 .VideoPlay {
     
 }
-.VideoPlayer{
-    
+.PlayerDiv{
+    position:relative;
+    //display:flex;
+    margin: auto;
+    width:940px; 
+    height:522px;
+    //justify-content: center;
+   .VideoPlayer{
+       outline: none;
+   }
+    .PlayBtn{
+        position: absolute;
+        top: 35%;
+        right: 45%;  
+    }
+    .PlayBtnHide{
+        visibility: hidden;
+    }
+
+    .PlayPauseBtn{
+        position: absolute;
+        left:10px;
+        bottom:10px;
+    }
+
+    p{
+        position: absolute;
+        top:5px;
+        left: 20px;
+        color: #FFFFFF;
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+      }
+    .OvalImg {
+        position: absolute;
+        left: 20px;
+        top: 70px;
+        width: 31px;
+        height: 31px;
+      }
+      h3 {
+        position: absolute;
+      left: 70px;
+      top: 63px;
+      height: 24px;
+      font-weight: 400;
+      width: 208px;
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      }
+    .Button {
+        position: absolute;
+        right: 2vw;
+        top: 25px;
+        background-color: rgba(255, 255, 255, 0);
+        border: none;
+        outline: none;
+        .filled {
+          height: 29px;
+          width: 31px;
+        }
+        .outline {
+          height: 29px;
+          width: 31px;
+        }
+      }
 }

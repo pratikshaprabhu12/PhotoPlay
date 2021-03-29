@@ -74,12 +74,12 @@ const Home = ({ search = (search) => {}, }) => {
             
           }}
           className={styles.Banner}
-          onScroll={()=>{setShow(true);changeBackground();}}
+          //onScroll={()=>{setShow(true);changeBackground();}}
         >
           <img className={styles.logos} src={logo} />
           <h1>Discover the world’s best photos & videos</h1>
           <h2>Best memories online</h2>
-          <form className={styles.bg} onSubmit={handleSubmit}>
+          <form className={styles.bg} onSubmit={()=>handleSubmit}>
             <input
               type="text"
               placeholder="Search photos, videos, artists"
@@ -87,7 +87,7 @@ const Home = ({ search = (search) => {}, }) => {
                 setText(e.target.value);
               }}
             ></input>
-            <div className={styles.bgs} onClick={handleSubmit}>
+            <div className={styles.bgs} onClick={()=>handleSubmit}>
               <span>SEARCH</span>
             </div>
           </form>

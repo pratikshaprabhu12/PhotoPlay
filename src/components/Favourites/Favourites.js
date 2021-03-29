@@ -99,7 +99,10 @@ let data= fav.filter(
                       ele.id === item;
                       return (
                         <div className={styles.Card} key={i}>
-                          <img src={ele.image} alt=""></img>
+                          <img 
+                          onClick={() => {
+                            history.push('/VideoPlay/'+`${item.id}`);
+                          }}src={ele.image} alt=""></img>
                           <img src={playButton} className={styles.playButton} />
                           <img src={oval} className={styles.OvalImg}></img>
                           <h3>{ele.user.name}</h3>
