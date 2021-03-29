@@ -10,15 +10,15 @@ import axios from 'axios';
 //import cn from 'classnames';
 
 const Home = ({ search = (search) => {}, }) => {
-  const [navbar, setNavBar] = useState(false);
+  const [show, setShow] = useState(false);
   //const { search, setSearch,setImg} = useUser();
   //const navBar = cn(styles.header, { [styles.Active]: navbar });
   const changeBackground = () => {
 
     if (window.scrollY >= 200) {
-      setNavBar(true);
+      setShow(true);
     } else {
-      setNavBar(false);
+      setShow(false);
     }
   };
 
@@ -66,13 +66,15 @@ const Home = ({ search = (search) => {}, }) => {
 
   return (
     <div className={styles.Home}>
-      {path[1]!=='PhotoDetails'||path[1]==='VideoPlay'? (
+      {path[1]!=='PhotoDetails'|| path[1]!=='VideoPlay'? (
         <div
           style={{
             backgroundImage: 'url(' + img + ')',
             backgroundSize: 'cover',
+            
           }}
           className={styles.Banner}
+          onScroll={()=>{setShow(true);changeBackground();}}
         >
           <img className={styles.logos} src={logo} />
           <h1>Discover the world’s best photos & videos</h1>

@@ -26,8 +26,8 @@ const Router = () => {
   return (
     <div className={styles.Router}>
       <Home search={(value)=>{value?setSearch(value):setSearch('animal');}}/>
-      
-      {path[1]!=='PhotoDetails'||path[1]==='VideoPlay'?(
+      {console.log(path[1]!=='PhotoDetails'||path[1]!=='VideoPlay')}
+      {path[1]!=='PhotoDetails'||path[1]!=='VideoPlay'?(
       <div className={styles.NavBar}>
         <NavLink
           style={{ marginRight: '5vw' }}
@@ -66,7 +66,7 @@ const Router = () => {
           <Favourites />
         </Route>
 
-        <Route exact path="/VideoPlay">
+        <Route exact path="/VideoPlay/:id">
           <VideoPlay />
         </Route>
         <Route exact path="/PhotoDetails/:id">

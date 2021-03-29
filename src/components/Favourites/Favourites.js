@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect} from 'react';
 import {useHistory} from 'react-router-dom';
 import styles from './Favourites.module.scss';
 import { useUser } from '../../ContextApis/ProvideUser';
@@ -8,29 +8,37 @@ import oval from '../../assets/Group 2/Oval Copy.png';
 import playButton from '../../assets/ShapeCopy6.png';
 
 const Favourites = ({ ...props }) => {
-  const { fav, setFav, img, video } = useUser();
+  const { fav, setFav, img, video,photo,vid ,search,favVideo, setFavVideo} = useUser();
   let history=useHistory();
-let image = img.filter(
-  (ele, ind) =>
-    ind ===
-    img.findIndex(
-      (elem) =>
-        elem.id === ele.id 
-    )
-);
-let Video=video.filter(
-  (ele, ind) =>
-    ind ===
-    video.findIndex(
-      (elem) =>
-        elem.id === ele.id 
-    )
-);
-console.log(image);
+  useEffect(() => {
+    localStorage.setItem('Fav', JSON.stringify([...fav]));
+  }, [fav]);
+  //let favo=JSON.parse(localStorage.getItem('Fav'))||'{}';
+// let image = photo.filter(
+//   (ele, ind) =>
+//     ind ===
+//     photo.findIndex(
+//       (elem) =>
+//         elem.id === ele.id 
+//     )
+// );
+let image=JSON.parse(localStorage.getItem('photo'))||'{}';
+
+useEffect(() => {
+  localStorage.setItem('Fav', JSON.stringify([...fav]));
+}, [favVideo]);
+let Video=JSON.parse(localStorage.getItem('video'))||'{}';
+
+
+let data= fav.filter(
+    (ele, ind) =>
+     ele!=='['&&ele!==']'&&ele!=='}'&&ele!='{'
+  );
+
   return (
     <div className={styles.Favourites}>
       <div className={styles.column}>
-        {fav.map((item, index) => {
+        {data.map((item, index) => {
           return (
             <div className={styles.Card} key={index}>
               {image.find((ele) => {
@@ -59,6 +67,13 @@ console.log(image);
                                     )
                                   : setFav((fav) => [...fav, ele.id]);
                               }
+                              // {
+                              //   favo.find((elem) => {
+                              //     return elem === ele.id;
+                              //   })
+                              //     ? localStorage.setItem('Fav', JSON.stringify(favo?favo.filter((elem) => elem !== ele.id):[]))
+                              //     : localStorage.setItem('Fav', JSON.stringify([...favo, ele.id]));
+                              // }
                             }}
                           >
                             {fav.find((elem) => {
