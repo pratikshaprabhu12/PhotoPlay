@@ -1,19 +1,15 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import {useLocation,useHistory} from 'react-router-dom';
-import banner from '../../assets/1.0. Home - Photos/Mask.png';
 import logo from '../../assets/1.0. Home - Photos/Logo.png';
 import DarkLogo from '../../assets/Logo.png';
 import styles from './Home.module.scss';
-import { useUser } from '../../ContextApis/ProvideUser';
-import axios from 'axios';
-//import cn from 'classnames';
+
 
 const Home = ({ search = (search) => {}, }) => {
   const [show, setShow] = useState(false);
   let history=useHistory();
-  //const { search, setSearch,setImg} = useUser();
-  //const navBar = cn(styles.header, { [styles.Active]: navbar });
+  
   const changeBackground = () => {
 
     if (window.scrollY > 15) {
@@ -51,24 +47,23 @@ const Home = ({ search = (search) => {}, }) => {
   }, []);
 
   
-  const [perPage, setPerPage] = useState('');
-  const [result, setResult] = useState([]);
+ 
   const location=useLocation();
   const path=location.pathname.split('/');
 
-  function handleChange(event) {
-    const searchvalue = event.target.value;
-    search(searchvalue);
-    }
-    function noOfPics(event) {
-    const perPage = event.target.value;
-    setPerPage(perPage);
-    }
+  
 
     function handleSubmitSmall(event) {
       event.preventDefault();
-      history.push(path[1]==='PhotoDetails'?'/':'/videos');
       search(text);
+      if(path[1]==='PhotoDetails'){
+        history.push('/');
+      }else if(path[1]==='VideoPlay'){
+        history.push('/videos');
+      }else{
+        return;
+      }
+      
       }
     
     

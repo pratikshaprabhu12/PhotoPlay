@@ -4,9 +4,9 @@ import {
   NavLink,
   Switch,
   Route,
-  useHistory,
+  //useHistory,
   useLocation,
-  useParams,
+  //useParams,
 } from 'react-router-dom';
 import Home from '../components/Home/Home';
 import Footer from '../components/Footer/Footer';
@@ -17,23 +17,23 @@ import VideoPlay from '../components/VideoPlay/VideoPlay';
 import PhotoDetails from '../components/PhotoDetails/PhotoDetails';
 
 const Router = () => {
-  const history = useHistory();
+  //const history = useHistory();
   const location=useLocation();
   const path=location.pathname.split('/');
-  console.log(path);
-  const { id } = useParams();
+  
+  //const { id } = useParams();
   const [search,setSearch]=useState('animal');
   return (
     <div className={styles.Router}>
       <Home search={(value)=>{value?setSearch(value):setSearch('animal');}}/>
-      {console.log(search)}
-      {console.log(path[1]!=='PhotoDetails'||path[1]!=='VideoPlay')}
+      
       {path[1]==='PhotoDetails'||path[1]==='VideoPlay'?null:(
       <div className={styles.NavBar}>
         <NavLink
           style={{ marginRight: '5vw',marginLeft:'-10px' }}
           className={styles.inactive}
           exact activeClassName={styles.active}
+          // to={`/${path[1]===''?search:'animal'}`}
           to="/"
         >
           Photos
@@ -57,6 +57,7 @@ const Router = () => {
       </div>)}
 
       <Switch>
+        {/* <Route exact path={`/${path[1]===''?search:'animal'}`}> */}
         <Route exact path="/">
           <Photos search={path[1]===''?search:'animal'}/>
         </Route>

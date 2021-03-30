@@ -1,6 +1,11 @@
 .Photos {
 }
-
+.load{
+  text-align: center;
+  color: #9e9ba0;
+  font-size: 18px;
+  font-family: 'Roboto', sans-serif;
+}
 /* Create four equal columns that sits next to each other */
 .column {
   display: grid;
@@ -56,4 +61,27 @@
       }
     }
   }
+}
+
+@media (max-width:1000px){
+  .column{
+    display: grid;
+  margin-top: 27px;
+  margin-left: 15vw;
+  margin-right: 24vw;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr ;
+}
+}
+@media (max-width:700px){
+  .column{
+    display: grid;
+  margin-top: 27px;
+  margin-left: 5vw;
+  margin-right: 24vw;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  grid-template-columns: 1fr 1fr ;
+}
 }

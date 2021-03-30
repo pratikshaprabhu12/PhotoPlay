@@ -29,11 +29,11 @@ const Photos = ({ search }) => {
 
   const url = 'https://api.pexels.com/v1/search?query=';
   const getImg = () => {
-    console.log(search);
+    
     setSearch(search);
     if(!localStorage.getItem(search+' photo'))
     {
-      console.log('hello');
+      
     fetch(url + search, {
       headers: {
         Authorization:
@@ -74,7 +74,7 @@ const Photos = ({ search }) => {
     let val=JSON.parse(localStorage.getItem(search+' next'))||'{}';
     if(val===nextLink)
     {
-    console.log('hello');
+   
     fetch(nextLink, {
       headers: {
         Authorization:
@@ -111,10 +111,7 @@ const Photos = ({ search }) => {
         
       });
     }
-    else{
-
-      console.log("elsePart",nextLink);
-    }
+    
   };
   useEffect(() => {
     setImg([]);
@@ -132,7 +129,7 @@ const Photos = ({ search }) => {
         dataLength={img}
         next={newUrl}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<h4 className={styles.load}>Loading...</h4>}
       >
         <div className={styles.column}>
           {image.map((item, index) => {
@@ -155,13 +152,7 @@ const Photos = ({ search }) => {
                                   : setFav((fav) => [...fav, item.id]):null;
                               }
                               
-                    // {
-                    //   favo.find((ele) => {
-                    //     return ele === item.id;
-                    //   })
-                    //     ? localStorage.setItem('Fav', JSON.stringify(favo?favo.filter((ele) => ele !== item.id):[]))
-                    //     : localStorage.setItem('Fav', JSON.stringify([...favo, item.id]));
-                    // }
+                    
                     setHeart(!heart);
                   }}
                 >

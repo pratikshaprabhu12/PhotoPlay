@@ -1,22 +1,14 @@
 import React, {
   createContext,
-  ReactChildren,
-  ReactChild,
   useContext,
   useState,
 } from 'react';
 
-// interface AuxProps {
-//   children: ReactChild | ReactChildren | ReactChild[] | ReactChildren[];
-// }
-
-// @ts-ignore
 export const userContext = createContext();
 
 export const ProvideUser = ({ children }) => {
   let val=JSON.parse(localStorage.getItem('Fav'))||'[]';
   let value=JSON.parse(localStorage.getItem('photo'))||'[]';
-  //let valvideo=JSON.parse(localStorage.getItem('FavVideo'))||'[]';
   let valuevideo=JSON.parse(localStorage.getItem('video'))||'[]';
   const [fav, setFav] = useState(val.length!==0?val:[]);
   const [img, setImg] = useState([]);

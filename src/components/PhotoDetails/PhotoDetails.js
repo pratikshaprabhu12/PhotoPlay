@@ -6,10 +6,9 @@ import { useUser } from '../../ContextApis/ProvideUser';
 import filledHeart from '../../assets/video-facorite-deselct.png';
 import outlineHeart from '../../assets/video-favorite.png';
 import { MdZoomIn,MdZoomOut} from "react-icons/md";
-import zoomIn from '../../assets/Combined Shape.png';
-import zoomOut from '../../assets/Combined Shape (1).png';
-const PhotoDetails = ({ ...props }) => {
-  const { fav, setFav, img, video ,search} = useUser();
+
+const PhotoDetails = () => {
+  const { fav, setFav, img} = useUser();
   const location=useLocation();
   const path=location.pathname.split('/');
   //let favo=JSON.parse(localStorage.getItem('Fav'))||'{}';
@@ -73,13 +72,7 @@ else{
                                   : setFav((fav) => [...fav, ele.id]);
                               }
                              
-                              // {
-                              //   favo.find((elem) => {
-                              //     return elem === ele.id;
-                              //   })
-                              //     ? localStorage.setItem('Fav', JSON.stringify(favo?favo.filter((elem) => elem !== ele.id):[]))
-                              //     : localStorage.setItem('Fav', JSON.stringify([...favo, ele.id]));
-                              // }
+                             
                             }
                           }
                           >

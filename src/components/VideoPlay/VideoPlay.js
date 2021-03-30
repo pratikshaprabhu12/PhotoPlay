@@ -5,13 +5,13 @@ import { useUser } from '../../ContextApis/ProvideUser';
 import filledHeart from '../../assets/video-facorite-deselct.png';
 import outlineHeart from '../../assets/video-favorite.png';
 import playButton from '../../assets/Shape Copy 7.png';
-import maxScreen from '../../assets/Combined Shape (2).png';
-import playbutton from '../../assets/Fill 1.png';
-import pauseButton from '../../assets/Combined Shape (3).png';
+//import maxScreen from '../../assets/Combined Shape (2).png';
+//import playbutton from '../../assets/Fill 1.png';
+//import pauseButton from '../../assets/Combined Shape (3).png';
 import styles from './VideoPlay.module.scss';
 
-const VideoPlay = ({ ...props }) => {
-  const { fav, setFav, img, video ,search} = useUser();
+const VideoPlay = () => {
+  const { fav, setFav, img, video } = useUser();
   const location=useLocation();
   const path=location.pathname.split('/');
   let videoref=useRef(null);
@@ -30,8 +30,8 @@ let Video = videodata.filter(
 useEffect(() => {
   localStorage.setItem('Fav', JSON.stringify([...fav]));
 }, [fav]);
-var myVideo = document.getElementById("video1");
-const getVideo=(ele)=>{videoref=ele;};
+//var myVideo = document.getElementById("video1");
+//const getVideo=(ele)=>{videoref=ele;};
 const [show,setShow]=React.useState(true);
 const playVideo=()=>{
     
@@ -44,7 +44,7 @@ const playVideo=()=>{
   return (<div className={styles.VideoPlay}>
     {Video.filter((ele) => ele.id === path[2]*1)
                     .map((ele, i) => {
-                      //console.log(ele.id === path[2]*1);
+                      
                       return (<div className={styles.PlayerDiv} key={i}>
     <video ref={videoref} width="925" height="522" controls className={styles.VideoPlayer} >
       <source  src={ele.video_files[0].link} type="video/mp4"/>

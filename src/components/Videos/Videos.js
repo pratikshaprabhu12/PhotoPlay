@@ -5,30 +5,29 @@ import styles from './Videos.module.scss';
 import {useHistory} from 'react-router-dom';
 import playButton from '../../assets/ShapeCopy6.png';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import { useUser } from '../../ContextApis/ProvideUser';
 import filledHeart from '../../assets/Icon-heart-deselect.png';
 import outlineHeart from '../../assets/video-favorite.png';
 
 const Videos = ({ search }) => {
-  //const [search, SetSearch] = useState('animal');
-  const [nextLink, SetNextLink] = useState('');
+
+  //const [nextLink, SetNextLink] = useState('');
   const [heart, setHeart] = useState(false);
   const { fav, setFav, video, setVideo,vid,SetVid,setSearch } = useUser();
   const [count, setCount] = useState(1);
   const history = useHistory();
-  let Vido = video.filter(
-    (ele, ind) =>
-      ind ===
-      vid.findIndex(
-        (elem) =>
-          elem.id === ele.id 
-      )
-  );
+  // let Vido = video.filter(
+  //   (ele, ind) =>
+  //     ind ===
+  //     vid.findIndex(
+  //       (elem) =>
+  //         elem.id === ele.id 
+  //     )
+  // );
 
   const url = 'https://api.pexels.com/videos/search?query=';
   const getImg = () => {
-    console.log('videos');
+   
     setSearch(search);
     if(!localStorage.getItem(search+' video'))
     {
@@ -43,27 +42,20 @@ const Videos = ({ search }) => {
       })
       .then((data) => {
         let val=[];
-        // let Vido = vid.filter(
-        //   (ele, ind) =>
-        //     ind ===
-        //     vid.findIndex(
-        //       (elem) =>
-        //         elem.id === ele.id 
-        //     )
-        // );
+        
         localStorage.setItem(search+' video', JSON.stringify([...val,...data.videos]));
         localStorage.setItem('video', JSON.stringify([...vid,...data.videos]));
         localStorage.setItem(search+' nextVideo', JSON.stringify(data.page));
         SetVid([...vid,...data.videos]);
         setVideo([...val, ...data.videos]);
-        console.log([...val, ...data.videos]);
-        SetNextLink(data.next_page);
+        // console.log([...val, ...data.videos]);
+        //SetNextLink(data.next_page);
         setCount(data.page);
       });
     }else{
       let data=JSON.parse(localStorage.getItem(search+' video'))||'{}';
       setVideo(data);
-      Vido=[data];
+      //Vido=[data];
       let key=JSON.parse(localStorage.getItem(search+' nextVideo'))||'{}';
       setCount(key);
     }
@@ -72,7 +64,7 @@ const Videos = ({ search }) => {
   const newUrl = () => {
     
     let val=JSON.parse(localStorage.getItem(search+' nextVideo'))||'{}';
-    console.log(val,nextLink);
+    
     if(val===count)
     {
       let page = count + 1;
@@ -87,14 +79,15 @@ const Videos = ({ search }) => {
         return resp.json();
       })
       .then((data) => {
-        let Vido = video.filter(
-          (ele, ind) =>
-            ind ===
-            vid.findIndex(
-              (elem) =>
-                elem.id === ele.id 
-            )
-        );let videos = vid.filter(
+        // let Vido = video.filter(
+        //   (ele, ind) =>
+        //     ind ===
+        //     vid.findIndex(
+        //       (elem) =>
+        //         elem.id === ele.id 
+        //     )
+        // );
+        let videos = vid.filter(
           (ele, ind) =>
             ind ===
             vid.findIndex(
@@ -128,7 +121,7 @@ const Videos = ({ search }) => {
         dataLength={video}
         next={newUrl}
         hasMore={true}
-        loader={<h4>Loading...</h4>}
+        loader={<h4 className={styles.load}>Loading...</h4>}
       >
         <div className={styles.column}>
           {video.map((item, index) => {

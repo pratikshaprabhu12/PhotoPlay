@@ -7,21 +7,13 @@ import outlineHeart from '../../assets/video-favorite.png';
 import oval from '../../assets/Group 2/Oval Copy.png';
 import playButton from '../../assets/ShapeCopy6.png';
 
-const Favourites = ({ ...props }) => {
-  const { fav, setFav, img, video,photo,vid ,search,favVideo, setFavVideo} = useUser();
+const Favourites = () => {
+  const { fav, setFav,favVideo} = useUser();
   let history=useHistory();
   useEffect(() => {
     localStorage.setItem('Fav', JSON.stringify([...fav]));
   }, [fav]);
-  //let favo=JSON.parse(localStorage.getItem('Fav'))||'{}';
-// let image = photo.filter(
-//   (ele, ind) =>
-//     ind ===
-//     photo.findIndex(
-//       (elem) =>
-//         elem.id === ele.id 
-//     )
-// );
+  
 let image=JSON.parse(localStorage.getItem('photo'))||'{}';
 
 useEffect(() => {
@@ -31,7 +23,7 @@ let Video=JSON.parse(localStorage.getItem('video'))||'{}';
 
 
 let data= fav.filter(
-    (ele, ind) =>
+    (ele) =>
      ele!=='['&&ele!==']'&&ele!=='}'&&ele!='{'
   );
 
@@ -67,13 +59,7 @@ let data= fav.filter(
                                     )
                                   : setFav((fav) => [...fav, ele.id]);
                               }
-                              // {
-                              //   favo.find((elem) => {
-                              //     return elem === ele.id;
-                              //   })
-                              //     ? localStorage.setItem('Fav', JSON.stringify(favo?favo.filter((elem) => elem !== ele.id):[]))
-                              //     : localStorage.setItem('Fav', JSON.stringify([...favo, ele.id]));
-                              // }
+                              
                             }}
                           >
                             {fav.find((elem) => {
