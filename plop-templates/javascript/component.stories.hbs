@@ -1,0 +1,24 @@
+import React from 'react';
+import {{pascalCase name}} from './{{pascalCase name}}';
+
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+title: 'Intern Management/{{pascalCase name}}',
+component: {{pascalCase name}},
+parameters: {
+backgrounds: {
+default: "light",
+values: [
+{ name: "white", value: "#ffffff" },
+{ name: "light", value: "#f6f9fd" },
+{ name: "dark", value: "#121432" },
+{ name: "black", value: "#000000" },
+],
+},
+},
+};
+
+export const {{pascalCase name}}_Default = () => {
+return (
+<{{pascalCase name}} />);
+};

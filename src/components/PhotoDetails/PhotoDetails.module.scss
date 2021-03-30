@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+.PhotoDetails {
+  margin-top: 100px;
+}
+.Card {
+    position: relative;
+    //border: solid 2px black;
+    text-align: center;
+    height: 522px;
+    width: 940px;
+    //overflow: scroll;
+    margin: auto;
+
+    p{
+      position: absolute;
+      top:5px;
+      left: 20px;
+      color: #FFFFFF;
+      font-family: 'Roboto', sans-serif;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    img {
+      text-align: center;
+      height: 522px;
+      width: 940px;
+    }
+    .OvalImg {
+      position: absolute;
+      left: 20px;
+      top: 70px;
+      width: 31px;
+      height: 31px;
+    }
+    h3 {
+      position: absolute;
+      left: -20px;
+      top: 65px;
+      height: 24px;
+      width: 208px;
+      color: #ffffff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+    }
+    .Button {
+      position: absolute;
+      right: 10vw;
+      top: 25px;
+      background-color: rgba(255, 255, 255, 0);
+      border: none;
+      outline: none;
+      .filled {
+        height: 29px;
+        width: 31px;
+      }
+      .outline {
+        height: 29px;
+        width: 31px;
+      }
+    }
+    .zoomIn{
+      position: absolute;
+      right: 6vw;
+      top: 20px;
+      height: 40px;
+      outline: none;
+      border:none;
+      width: 60px;
+      border-radius: 4px 0 0 4px;
+      background-color: #FFFFFF;
+    }
+    .zoomOut{
+      position: absolute;
+      right: 2.1vw;
+      top: 20px;
+      height: 40px;
+      outline: none;
+      border: none;
+      width: 60px;
+      border-radius: 4px 0 0 4px;
+      background-color: #FFFFFF;
+    }
+  }

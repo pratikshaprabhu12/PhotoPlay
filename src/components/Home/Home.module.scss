@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.Home {
+  position: relative;
+  .Banner {
+    top: 0;
+    height: 40vh;
+    width: 100vw;
+    transition: top 0.6s;
+    
+
+    .logos {
+      margin-left: 21.2vw;
+      margin-top: 30px;
+    }
+    h1 {
+      color: white;
+      font-family: 'Roboto', sans-serif;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0;
+      line-height: 35px;
+      text-align: center;
+    }
+    h2 {
+      color: #ffff;
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0;
+      line-height: 24px;
+      text-align: center;
+      font-weight: 400;
+    }
+    .bg {
+      height: 44px;
+      width: 620px;
+      border-radius: 4px;
+      background-color: #ffffff;
+      border: 1px solid #E3E3E3;
+      margin-left: 33vw;
+      display: flex;
+      flex-direction: row;
+
+      input {
+        margin-left: 5px;
+        border: none;
+        height: 40px;
+        width: 50vw;
+        border-radius: 4px;
+      }
+      input:focus {
+        outline: none;
+      }
+      ::placeholder {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+      }
+      .bgsMask {
+        height: 40px;
+        width: 87px;
+        border-radius: 2px;
+        background-color: #560014;
+        margin-left: 65px;
+        cursor:pointer;
+        margin-top: 2px;
+        display: table;
+        text-align: center;
+        .tag {
+          color: #ffffff;
+          letter-spacing: 0.32px;
+          line-height: 16px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+          margin-top: 100px;
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .BannerHide{
+    display:none;
+    visibility: hidden;
+  }
+  .mask {
+    height: 100px;
+    width: 100vw;
+    z-index: 1;
+    position: fixed;
+    top:0;
+    background-color: #f3f3f3;
+    .logos {
+      margin-left: 21.2vw;
+      margin-top: 30px;
+    }
+    .bgSmall{
+      position: relative;
+      margin-left: 55.5vw;
+      margin-top: -50px;
+      box-sizing: border-box;
+      height: 44px;
+      width: 380px;
+      border: 1px solid #E3E3E3;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      display: flex;
+      flex-direction: row;
+
+
+      input {
+        margin-left: 5px;
+        border: none;
+        height: 40px;
+        width: 20vw;
+        border-radius: 4px;
+      }
+      input:focus {
+        outline: none;
+      }
+      ::placeholder {
+        font-family: 'Roboto', sans-serif;
+        font-size: 16px;
+      }
+      .bgsSmall {
+        height: 40px;
+        width: 84px;
+        border-radius: 2px;
+        background-color: #560014; 
+        cursor:pointer;
+        display: table;
+        text-align: center;
+        .tagSmall {
+          color: #ffffff;
+          letter-spacing: 0.32px;
+          line-height: 16px;
+          font-family: 'Roboto', sans-serif;
+          font-size: 14px;
+          font-weight: 700;
+         
+          display: table-cell;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .maskHide{
+    display:none;
+    visibility: hidden;
+  }
+}
