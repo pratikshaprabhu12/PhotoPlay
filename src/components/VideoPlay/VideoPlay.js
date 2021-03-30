@@ -38,16 +38,7 @@ const playVideo=()=>{
     videoref.current.play();
     setShow(prev=>!prev);
     };
-// const playVideo=()=>{
-//   if(show)
-//   {
-//   videoref.current.play();
-//   setShow(prev=>!prev);
-//   }
-// else{
-//   videoref.current.pause();
-//   setShow(prev=>!prev);
-// }};
+
 
 
   return (<div className={styles.VideoPlay}>
