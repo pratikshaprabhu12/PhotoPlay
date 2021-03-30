@@ -72,7 +72,6 @@ const Photos = ({ search }) => {
 
   const newUrl = () => {
     let val=JSON.parse(localStorage.getItem(search+' next'))||'{}';
-    console.log(val,nextLink);
     if(val===nextLink)
     {
     console.log('hello');
