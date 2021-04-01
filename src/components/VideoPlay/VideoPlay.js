@@ -46,7 +46,7 @@ const playVideo=()=>{
                     .map((ele, i) => {
                       
                       return (<div className={styles.PlayerDiv} key={i}>
-    <video ref={videoref} width="925" height="522" controls className={styles.VideoPlayer} >
+    <video ref={videoref}  controls className={styles.VideoPlayer} >
       <source  src={ele.video_files[0].link} type="video/mp4"/>
 </video>
 <div onClick={()=>{playVideo();}}>

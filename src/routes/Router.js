@@ -29,26 +29,28 @@ const Router = () => {
       
       {path[1]==='PhotoDetails'||path[1]==='VideoPlay'?null:(
       <div className={styles.NavBar}>
+      
         <NavLink
-          style={{ marginRight: '5vw',marginLeft:'-10px' }}
+          //style={{marginRight: '5vw',marginLeft:'-10px',  }}
           className={styles.inactive}
           exact activeClassName={styles.active}
+          id="nav"
           // to={`/${path[1]===''?search:'animal'}`}
           to="/"
         >
           Photos
         </NavLink>
         <NavLink
-          style={{ marginRight: '5vw' }}
-          className={styles.inactive}
+          //style={{ marginRight: '5vw' }}
+          className={styles.inactive1}
           activeClassName={styles.active}
           to="/videos"
         >
           Videos
         </NavLink>
         <NavLink
-          style={{ marginLeft: '39vw' }}
-          className={styles.inactive}
+          //style={{ marginLeft: '39vw' }}
+          className={styles.inactive2}
           activeClassName={styles.active}
           to="/Favourites"
         >

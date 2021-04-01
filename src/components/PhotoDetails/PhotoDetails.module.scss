@@ -3,7 +3,7 @@
 
 .PhotoDetails {
   margin-top: 100px;
-}
+
 .Card {
     position: relative;
     //border: solid 2px black;
@@ -84,4 +84,83 @@
       border-radius: 4px 0 0 4px;
       background-color: #FFFFFF;
     }
+  }
+}
+  @media (max-width:1000px){
+    .PhotoDetails {
+      
+    .Card {
+      height: 522px;
+      width: 940px;
+        p{
+          left: 60px;  
+        }
+    
+        img {
+          height: 422px;
+          width: 840px;
+        }
+        .OvalImg {
+          left: 60px;
+        }
+        h3 {
+          left: 110px; 
+        }
+        .Button {
+          right: 20vw;
+        }
+        .zoomIn{
+          
+          right: 13vw;
+          
+        }
+        .zoomOut{
+          
+          right: 6.1vw;
+          
+        }
+      }
+    }
+  }
+  @media (max-width:700px){
+    .PhotoDetails {
+      
+      .Card {
+        position: relative;
+        height: 522px;
+        width: 100vw;
+          p{
+            left: 30px;  
+            font-size: 16px;
+          }
+      
+          img {
+            height: 422px;
+            width: 540px;
+          }
+          .OvalImg {
+            left: 30px;
+          }
+          h3 {
+            left: 80px; 
+          }
+          .Button {
+            top: 16px;
+            right: 10vw;
+          }
+          .zoomIn{
+            position: absolute;
+            top: 60px;
+            right: 18vw;
+            
+          }
+          .zoomOut{
+            position: absolute;
+            top: 60px;
+            right: 6.1vw;
+            
+          }
+        }
+      }
+    
   }

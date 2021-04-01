@@ -52,7 +52,7 @@ const Home = ({ search = (search) => {}, }) => {
   const path=location.pathname.split('/');
 
   
-
+  
     function handleSubmitSmall(event) {
       event.preventDefault();
       search(text);
@@ -70,6 +70,11 @@ const Home = ({ search = (search) => {}, }) => {
     function handleSubmit(event) {
     event.preventDefault();
     search(text);
+    if(path[1]==='Favourites')
+    {
+      history.push('/');
+    }
+    else{return;}
     }
   
  let Value=path[1]==='PhotoDetails'|| path[1]==='VideoPlay'?true:false;

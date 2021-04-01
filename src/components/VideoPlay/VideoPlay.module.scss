@@ -11,7 +11,9 @@
     height:522px;
     //justify-content: center;
    .VideoPlayer{
-       outline: none;
+      width:940px; 
+      height:522px;
+      outline: none;
    }
     .PlayBtn{
         position: absolute;
@@ -71,4 +73,104 @@
           width: 31px;
         }
       }
+}
+
+@media (max-width:1000px){
+  .VideoPlay {
+    margin-top: 0;
+}
+  .PlayerDiv{
+    width:750px; 
+    height:522px;
+    padding-left: 10px;
+   .VideoPlayer{
+    width:725px; 
+    height:422px;
+   }
+    .PlayBtn{
+        top: 40%;
+        right: 45%;  
+    }
+    
+    p{
+        font-size: 18px;
+        z-index: 2;
+        top:110px;
+        left: 25px;
+      }
+    .OvalImg {
+        
+        z-index: 1;
+        left: 25px;
+        top: 170px;
+        
+      }
+      h3 {
+       z-index: 1;
+      left: 70px;
+      top: 165px;
+      height: 24px;
+      font-weight: 400;
+      width: 208px;
+      font-size: 14px;
+      }
+    .Button {
+      z-index: 1;
+        position: absolute;
+        right: 5vw;
+        top: 125px;
+        
+      }
+}
+
+}
+
+@media (max-width:700px){
+  .VideoPlay {
+    margin-top: 0;
+}
+  .PlayerDiv{
+    width:540px; 
+    height:522px;
+    padding-left: 15px;
+   .VideoPlayer{
+      width:525px; 
+      height:422px;
+   }
+    .PlayBtn{
+        top: 40%;
+        right: 40%;  
+    }
+    
+    p{
+        font-size: 18px;
+        z-index: 2;
+        top:110px;
+        left: 25px;
+      }
+    .OvalImg {
+        
+        z-index: 1;
+        left: 25px;
+        top: 170px;
+        
+      }
+      h3 {
+       z-index: 1;
+      left: 70px;
+      top: 165px;
+      height: 24px;
+      font-weight: 400;
+      width: 208px;
+      font-size: 14px;
+      }
+    .Button {
+      z-index: 1;
+        position: absolute;
+        right: 5vw;
+        top: 125px;
+        
+      }
+}
+
 }
